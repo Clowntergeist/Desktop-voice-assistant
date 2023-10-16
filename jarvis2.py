@@ -1,145 +1,3 @@
-import requests from functions.online_ops 
-import find_my_ip, get_latest_news, get_random_advice, get_random_joke, get_trending_movies, get_weather_report, play_on_youtube, search_on_google, search_on_wikipedia, send_email, send_whatsapp_message
-from functions.os_ops 
-import open_calculator, open_camera, open_cmd, open_notepad, open_discordfrom pprint 
-import pprint
-
-
-if __name__ == '__main__':
-    greet_user()
-    while True:
-        query = take_user_input().lower()
-
-        if 'open notepad' in query:
-            open_notepad()
-
-        elif 'open discord' in query:
-            open_discord()
-
-        elif 'open command prompt' in query or 'open cmd' in query:
-            open_cmd()
-
-        elif 'open camera' in query:
-            open_camera()
-
-        elif 'open calculator' in query:
-            open_calculator()
-
-        elif 'ip address' in query:
-            ip_address = find_my_ip()
-            speak(f'Your IP Address is {ip_address}.\n For your convenience, I am printing it on the screen sir.')
-            print(f'Your IP Address is {ip_address}')
-
-        elif 'wikipedia' in query:
-            speak('What do you want to search on Wikipedia, sir?')
-            search_query = take_user_input().lower()
-            results = search_on_wikipedia(search_query)
-            speak(f"According to Wikipedia, {results}")
-            speak("For your convenience, I am printing it on the screen sir.")
-            print(results)
-
-        elif 'youtube' in query:
-            speak('What do you want to play on Youtube, sir?')
-            video = take_user_input().lower()
-            play_on_youtube(video)
-
-        elif 'search on google' in query:
-            speak('What do you want to search on Google, sir?')
-            query = take_user_input().lower()
-            search_on_google(query)
-
-        elif "send whatsapp message" in query:
-            speak('On what number should I send the message sir? Please enter in the console: ')
-            number = input("Enter the number: ")
-            speak("What is the message sir?")
-            message = take_user_input().lower()
-            send_whatsapp_message(number, message)
-            speak("I've sent the message sir.")
-
-        elif "send an email" in query:
-            speak("On what email address do I send sir? Please enter in the console: ")
-            receiver_address = input("Enter email address: ")
-            speak("What should be the subject sir?")
-            subject = take_user_input().capitalize()
-            speak("What is the message sir?")
-            message = take_user_input().capitalize()
-            if send_email(receiver_address, subject, message):
-                speak("I've sent the email sir.")
-            else:
-                speak("Something went wrong while I was sending the mail. Please check the error logs sir.")
-
-        elif 'joke' in query:
-            speak(f"Hope you like this one sir")
-            joke = get_random_joke()
-            speak(joke)
-            speak("For your convenience, I am printing it on the screen sir.")
-            pprint(joke)
-
-        elif "advice" in query:
-            speak(f"Here's an advice for you, sir")
-            advice = get_random_advice()
-            speak(advice)
-            speak("For your convenience, I am printing it on the screen sir.")
-            pprint(advice)
-
-        elif "trending movies" in query:
-            speak(f"Some of the trending movies are: {get_trending_movies()}")
-            speak("For your convenience, I am printing it on the screen sir.")
-            print(*get_trending_movies(), sep='\n')
-
-        elif 'news' in query:
-            speak(f"I'm reading out the latest news headlines, sir")
-            speak(get_latest_news())
-            speak("For your convenience, I am printing it on the screen sir.")
-            print(*get_latest_news(), sep='\n')
-
-        elif 'weather' in query:
-            ip_address = find_my_ip()
-            city = requests.get(f"https://ipapi.co/{ip_address}/city/").text
-            speak(f"Getting weather report for your city {city}")
-            weather, temperature, feels_like = get_weather_report(city)
-            speak(f"The current temperature is {temperature}, but it feels like {feels_like}")
-            speak(f"Also, the weather report talks about {weather}")
-            speak("For your convenience, I am printing it on the screen sir.")
-            print(f"Description: {weather}\nTemperature: {temperature}\nFeels like: {feels_like}")
-            def Reader():
-        speak("Tell Me The Name Of The Book!")
-
-        name = takeCommand()
-
-        if 'india' in name:
-
-            os.startfile('E:\\Kaushik Shresth\\Books\\Social Science\\History\\ch 1.pdf')
-            book = open('E:\\Kaushik Shresth\\Books\\Social Science\\History\\ch 1.pdf','rb')
-            pdfreader = PyPDF2.PdfFileReader(book)
-            pages = pdfreader.getNumPages()
-            speak(f"Number Of Pages In This Books Are {pages}")
-            speak("From Which Page I Have To Start Reading ?")
-            numPage = int(input("Enter The Page Number :"))
-            page = pdfreader.getPage(numPage)
-            text = page.extractText()
-            speak("In Which Language , I Have To Read ?")
-            lang = takeCommand()
-            
-            if 'hindi' in lang:
-                transl = Translator()
-                textHin = transl.translate(text,'hi')
-                textm = textHin.text
-                speech = gTTS(text = textm )
-                try:
-                    speech.save('book.mp3')
-                    playsound('book.mp3')
-
-                except:
-                    playsound('book.mp3')
-
-            else:
-                speak(text)   
-
-
-
-
-
 
 from logging import shutdown 
 import pyttsx3 
@@ -447,11 +305,7 @@ if __name__ == "__main__":
         elif 'screenshot'in query:
             screenshot()
               
-        elif 'where is my gf' in query:
-            speak("please!Don't fall in love sir . The world is full of fucking people")
-               
-        elif 'call mum' in query:
-            speak("hello mom")
+        
 
         elif 'close youtube' in query:
             CloseAPPS()
@@ -473,11 +327,8 @@ if __name__ == "__main__":
              CloseAPPS()
                   
 
-
-
         elif 'nothing' in query:
             speak("ok sir! i am waitting") 
-
 
         elif'wikipedia' in query:
             speak('Searching Wikipedia...')
@@ -486,8 +337,6 @@ if __name__ == "__main__":
             speak("According to Wikipedia")
             print(results)
             speak(results)
-
-
 
         elif 'how to' in query:
             speak("Getting Data From my server !wait sir !")
@@ -498,8 +347,6 @@ if __name__ == "__main__":
             how_to_func[0].print()
             speak(how_to_func[0].summary)   
  
-   
-
         elif 'open youtube search' in query:
             speak('ok sir')
             speak('opening youtube!')
@@ -544,9 +391,7 @@ if __name__ == "__main__":
             except:
                 speak("No speakable data avalible sir")    
 
-
-
-        elif 'website' in query:
+         elif 'website' in query:
             speak("ok sir lunching......")
             query = query.replace("jarvis","")
             query = query.replace("website","") 
@@ -558,8 +403,7 @@ if __name__ == "__main__":
 
         elif 'open stackoverflow' in query:
             webbrowser.open("stackoverflow.com")  
-
-        
+  
         elif 'pause' in query:
             keyboard.press('space bar')
 
@@ -607,8 +451,6 @@ if __name__ == "__main__":
             print(songs)    
             os.startfile(os.path.join(music_dir, songs[0]))  
 
-      
-
         elif 'play movie' in query:
             speak('just a second sir')
             movie_dir = 'D:\\movies'
@@ -624,11 +466,6 @@ if __name__ == "__main__":
             
         elif'play song' in query:
              Music() 
-        
-
-
-    
-
         elif 'start system' in query:
             speak('starting system')
             music_dir = 'D:\\poco x3\\jarvis2'
@@ -704,37 +541,26 @@ if __name__ == "__main__":
                 speak("sorry sir ,due to network issue i am unable to find where we are.")    
                 pass
   
-  
-
         elif 'scan system' in query:
             speak('scanning system sir please wait')
             scanPath ="C:\\Program Files (x86)\\Protegent AV Cloud\\pgavgui.exe"
             os.startfile(scanPath) 
 
-          
-
         elif 'closed system' in query:
             speak('ok sir shuting down the system, have a good day')
             shutdownPath ="C:\\Windows\\System32\\SlideToShutDown.exe"
-            os.startfile(shutdownPath)
-
-        
+            os.startfile(shutdownPath)  
         elif 'do you know me' in query:
             speak('no!')
-            
-
         elif 'are you ' in query:
             speak('sorry sir i am just jokeing')
             speak('your name is prayas ,and you such a good  friend for me')  
-
-
 
         elif 'take a break' in query:
             speak("Ok Sir , You Can Call Me Anytime !")
             speak("Just Say Wake Up Jarvis!")
             break    
         
-
         elif 'email to biku' in query:
             try:
                 speak("What should I say?")
@@ -813,22 +639,3 @@ def YouTubeAuto(command):
 
         press('m')
 
-
-
-
-
-
-def networkSpeed():
-    import speedtest
-    speak("checking")
-    speed= speedtest.Speedtest()
-    downloding = speed.download()
-    correctDown = int(downloding/8000000)
-    uploading = speed.upload()
-    correctUpload = int(uploading/8000000)
-    if 'uploading' in query:
-        speed(f"the uploading speed is {correctUpload} mbp s")
-    elif 'downloding' in query:
-         speed(f"the downloading speed is {correctDown} mbp s")
-    else :
-        speed(f"the uploading speed is {correctUpload} and the downloading speed is {correctDown}mbp s")
